@@ -1,0 +1,32 @@
+{
+  "name": "Insilico Lab MD Course",
+  "image": "ghcr.io/akinwumiishola5000/md-course:latest",
+  "hostRequirements": {
+    "cpus": 2,
+    "memory": "8gb",
+    "storage": "32gb"
+  },
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "ms-python.python",
+        "ms-toolsai.jupyter"
+      ],
+      "settings": {
+        "files.exclude": {
+          "**/.devcontainer": true,
+          "**/.github": true,
+          "**/.git": true
+        },
+        "git.enabled": false,
+        "python.defaultInterpreterPath": "/opt/conda/envs/md/bin/python",
+        "terminal.integrated.defaultProfile.linux": "bash",
+        "workbench.startupEditor": "none"
+      }
+    },
+    "codespaces": {
+      "openFiles": ["README.md"]
+    }
+  },
+  "remoteUser": "vscode"
+}
