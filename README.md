@@ -23,6 +23,19 @@ browser on a free cloud machine with all the software already installed.
    and press Enter. After about a minute you should see
    **All 18 checks passed**. If any check fails, copy the full output
    and post it in the course help channel.
+   
+## Getting new course materials
+
+New modules are added before each session. To get them in your
+existing codespace, type this in the terminal:
+
+```
+cd /workspaces/md-course && git pull
+```
+
+Always work inside your own `my-work` folder and never edit files
+inside `modules`. That way `git pull` always works without errors.
+
 
 ## Rules for your free hours
 
