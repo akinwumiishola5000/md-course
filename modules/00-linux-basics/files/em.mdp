@@ -1,0 +1,9 @@
+; Energy minimization (practice)
+define        = -DFLEXIBLE ; flexible water during minimization
+integrator    = steep      ; steepest descent minimization
+nsteps        = 5000       ; maximum number of steps
+emtol         = 1000.0     ; stop when max force < 1000 kJ/mol/nm
+cutoff-scheme = Verlet
+coulombtype   = PME        ; long-range electrostatics
+rcoulomb      = 1.0        ; short-range electrostatic cutoff (nm)
+rvdw          = 1.0        ; van der Waals cutoff (nm)
