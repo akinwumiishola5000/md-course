@@ -1,0 +1,8 @@
+; Topology for a small box of water (practice system)
+#include "amber99sb-ildn.ff/forcefield.itp"
+#include "amber99sb-ildn.ff/tip3p.itp"
+
+[ system ]
+Practice water box
+
+[ molecules ]
