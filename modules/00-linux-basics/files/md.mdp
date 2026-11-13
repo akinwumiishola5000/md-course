@@ -1,0 +1,17 @@
+; Short MD run (practice)
+integrator    = md         ; leap-frog integrator
+dt            = 0.002      ; time step in ps (2 fs)
+nsteps        = 5000       ; number of steps (5000 x 2 fs = 10 ps)
+cutoff-scheme = Verlet
+coulombtype   = PME
+rcoulomb      = 1.0
+rvdw          = 1.0
+constraints   = h-bonds    ; constrain bonds to hydrogen
+tcoupl        = V-rescale  ; thermostat
+tc-grps       = System
+tau_t         = 0.1
+ref_t         = 300        ; temperature in K
+gen_vel       = yes        ; generate starting velocities
+gen_temp      = 300
+nstenergy     = 100        ; save energies every 100 steps
+nstlog        = 1000       ; write to the log every 1000 steps
