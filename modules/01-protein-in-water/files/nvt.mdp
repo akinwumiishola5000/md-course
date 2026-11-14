@@ -1,0 +1,42 @@
+; nvt.mdp - equilibration at constant volume and temperature (NVT)
+; Brings the system to 300 K while the protein is held in place.
+define        = -DPOSRES     ; position restraints on protein heavy atoms
+integrator    = md           ; leap-frog integrator
+dt            = 0.002        ; time step (ps) = 2 fs
+nsteps        = 25000        ; 25000 x 0.002 ps = 50 ps
+
+; Output
+nstxout-compressed = 500     ; save coordinates every 1 ps
+nstenergy     = 500          ; save energies every 1 ps
+nstlog        = 500          ; update the log every 1 ps
+
+; Bonds
+continuation  = no           ; first dynamics run
+constraint_algorithm = lincs
+constraints   = h-bonds      ; bonds to hydrogen are constrained
+
+; Nonbonded interactions
+cutoff-scheme = Verlet
+nstlist       = 10
+rcoulomb      = 1.0
+rvdw          = 1.0
+coulombtype   = PME
+pme_order     = 4
+fourierspacing = 0.16
+DispCorr      = EnerPres     ; long-range dispersion correction
+
+; Temperature coupling (thermostat)
+tcoupl        = V-rescale
+tc-grps       = Protein Non-Protein   ; two coupling groups
+tau_t         = 0.1     0.1           ; time constant (ps)
+ref_t         = 300     300           ; temperature (K), one per group
+
+; Pressure coupling: off for NVT
+pcoupl        = no
+
+pbc           = xyz
+
+; Starting velocities
+gen_vel       = yes          ; assign random velocities
+gen_temp      = 300          ; from a Maxwell distribution at 300 K
+gen_seed      = -1           ; random seed
