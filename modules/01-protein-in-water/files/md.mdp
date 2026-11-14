@@ -1,0 +1,42 @@
+; md.mdp - production MD (no restraints)
+; This is the simulation you analyze in Module 03.
+integrator    = md
+dt            = 0.002        ; 2 fs
+nsteps        = 50000        ; 50000 x 0.002 ps = 100 ps
+
+; Output
+nstxout-compressed = 500     ; save coordinates every 1 ps (100 frames)
+compressed-x-grps  = System  ; save all atoms
+nstenergy     = 500
+nstlog        = 5000
+
+; Bonds
+continuation  = yes          ; continuing from NPT
+constraint_algorithm = lincs
+constraints   = h-bonds
+
+; Nonbonded interactions
+cutoff-scheme = Verlet
+nstlist       = 10
+rcoulomb      = 1.0
+rvdw          = 1.0
+coulombtype   = PME
+pme_order     = 4
+fourierspacing = 0.16
+DispCorr      = EnerPres
+
+; Temperature coupling
+tcoupl        = V-rescale
+tc-grps       = Protein Non-Protein
+tau_t         = 0.1     0.1
+ref_t         = 300     300
+
+; Pressure coupling
+pcoupl        = C-rescale
+pcoupltype    = isotropic
+tau_p         = 2.0
+ref_p         = 1.0
+compressibility = 4.5e-5
+
+pbc           = xyz
+gen_vel       = no
