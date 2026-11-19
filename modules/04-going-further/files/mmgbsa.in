@@ -1,0 +1,19 @@
+# mmgbsa.in - settings for gmx_MMPBSA (Module 04)
+# Each section starts with &name and ends with /
+
+&general
+  sys_name   = "T4L-JZ4",   # a name for this system
+  interval   = 5,           # use every 5th frame (101 frames -> 21 frames)
+  PBRadii    = 3,           # atomic radii set 3 = mbondi2, the standard choice for igb = 5
+/
+
+&gb
+  igb        = 5,           # Generalized Born model (GB-OBC2)
+  saltcon    = 0.150,       # salt concentration in M, as in the simulation
+/
+
+&decomp
+  idecomp    = 2,           # split the energy per residue (1-4 terms added to internal energy)
+  dec_verbose = 0,          # report only the total for each residue
+  print_res  = "within 4",  # only residues within 4 A of the ligand
+/
