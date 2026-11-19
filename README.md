@@ -64,6 +64,7 @@ your free hours two to four times faster.
 | 02 | Protein-ligand complex: ligand parameterization with ACPYPE/GAFF2 |
 | 03 | Trajectory analysis: RMSD, RMSF, radius of gyration, hydrogen bonds |
 | 04 | Going further: binding free energy and running on HPC clusters |
+| 05 | Your own system: a template for any protein or protein-ligand complex |
 
 Materials for each module are added to the `modules/` folder before the
 session.
