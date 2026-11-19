@@ -468,7 +468,7 @@ the file. You will see:
 ```
 [ molecules ]
 ; Compound        #mols
-Protein             1
+Protein_chain_A     1
 ```
 
 Add a new line at the end:
@@ -492,9 +492,12 @@ You should see three lines: the two `#include` lines near the top, and
 tail -n 4 topol.top
 ```
 
-> **Note:** if your protein were split into several chains, the
-> molecule names would be `Protein_chain_A`, `Protein_chain_B` and so
-> on. For 3HTB there is one chain, so it is `Protein`.
+> **Note:** the protein is called `Protein_chain_A` because it is chain
+> A in the PDB file, as with lysozyme in Module 01. A protein with
+> several chains would have one line for each: `Protein_chain_A`,
+> `Protein_chain_B` and so on. The ligand line always goes **after** all
+> the protein lines, because the ligand's coordinates come after the
+> protein's in `complex.gro`.
 
 ---
 
@@ -627,7 +630,7 @@ echo "SOL" | gmx genion -s ions.tpr -o solv_ions.gro -p topol.top -pname NA -nna
 tail -n 6 topol.top
 ```
 
-You should see `Protein`, `JZ4`, `SOL`, `NA` and `CL`.
+You should see `Protein_chain_A`, `JZ4`, `SOL`, `NA` and `CL`.
 
 > **👁 View it: the solvated system**
 > Download `solv_ions.gro` (about 1.5 MB) and open it in VMD or PyMOL.
